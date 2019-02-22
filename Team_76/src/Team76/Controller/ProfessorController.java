@@ -27,6 +27,13 @@ public class ProfessorController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
+		String action = request.getParameter("action");
+		if(action.equals("ViewGrades")) {
+			response.sendRedirect("ViewGrades.jsp");
+		}
+		if(action.equals("ProfessorDash")) {
+			response.sendRedirect("ProfessorDash.jsp");
+		}
 	}
 
 	/**
