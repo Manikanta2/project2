@@ -20,5 +20,9 @@
 <input type="hidden" name="action" value="CreateQuiz">
 <input type="submit" value="Create Quiz">
 </form>
+<form action="ProfessorController" method="post">
+<input type="hidden" name="action" value="Questions">
+<input type="submit" value="Questions">
+</form>
 </body>
 </html>

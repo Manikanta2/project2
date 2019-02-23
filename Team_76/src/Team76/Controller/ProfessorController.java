@@ -1,6 +1,8 @@
 package Team76.Controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +19,8 @@ public class ProfessorController extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
+	QuestionsController quiz=new QuestionsController();
+
     public ProfessorController() {
         super();
         // TODO Auto-generated constructor stub
@@ -33,6 +37,7 @@ public class ProfessorController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			//request.getSession().setAttribute("question", question);
 		String action = request.getParameter("action");
 		if (action == null || action.isEmpty()) {
 			response.sendRedirect("login.jsp");
@@ -40,6 +45,16 @@ public class ProfessorController extends HttpServlet {
 		if(action.equals("CreateQuiz")) {
 			response.sendRedirect("CreateQuiz.jsp");
 		}
+		if(action.equals("Questions")) {
+				response.sendRedirect("Questions.jsp");
+
+		}
+		
+		  if(action.equals("Continue")) {
+				 quiz.getParameters(request, response);
+					  response.sendRedirect("Questions.jsp"); 
+		  } 
+		 
 	}
 
 }
