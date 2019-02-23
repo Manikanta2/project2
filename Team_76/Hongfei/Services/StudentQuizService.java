@@ -14,45 +14,34 @@ import java.util.Properties;
 
 import Model.Quiz;
 
+/**
+ * retrieve quiz data from mysql database
+ * author: Hongfei Ju
+ * version: 1.0
+ */
 public class StudentQuizService {
 	private Properties dbProperties = null;
 	private Statement stmt = null;
-	private Connection conn = null;
-	
+	private Connection conn = null;	
 	private String dbname = "ser516p2";
-	private String tablename = "quiz";
-	
+	private String tablename = "quiz";	
 	
 	public StudentQuizService(){
-		//dbProperties = new Properties();
-		
-		
 		try {
-		    //dbProperties.load(GetStudentQuiz.class.getClassLoader().getResourceAsStream("file.properties"));
-		    
 		    Class.forName("com.mysql.jdbc.Driver");
-
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306", "jhf", "13245768");
-					
-		    conn.setAutoCommit(false);
-		    
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306", "jhf", "13245768");					
+		    conn.setAutoCommit(false);		    
 		    dbname = "ser516p2";
-		    tablename = "quiz";
-		    
+		    tablename = "quiz";		    
 		} catch (Throwable t) {
 		    t.printStackTrace();
-		} finally {
-			
 		}
 	}
 
 	public List<Quiz> list() {
-		System.out.println("******** get quizzes");
-		
 		Date today=new Date();
 		SimpleDateFormat dateFormat=new SimpleDateFormat("yyyyMMdd");
-		String simpleToday = dateFormat.format(today);
-		
+		String simpleToday = dateFormat.format(today);		
 		ResultSet resultSet = null;
 		List<Quiz> quizzes= new LinkedList<>();
 		
