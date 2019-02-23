@@ -1,21 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
 </head>
-<body>		
-	<h1>This is Student DashBoard.</h1>
-	
-	<form action="StudentController" method="get">
-		<input type="hidden" name="action" value="AttemptQuiz">
-		<input type="submit" value="Attempt Quiz">
+<body>
+	<h3>Welcome! Please login.</h3>
+	<form action="LoginController" method="post">
+		<table>
+			<tr>
+				<td>UserName:</td>
+				<td><input type="text" name="uName" aria-hidden="true"></td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td><input type="password" name="password"></td>
+			<tr>
+				<td><input type="submit" value="Login"></td>
+			</tr>
+		</table>
+		<input type="hidden" name="action" value="login">
 	</form>
-	
-	<form action="StudentController" method="get">
-		<input type="hidden" name="action" value="ViewGrade">
-		<input type="submit" value="View Grade">
-	</form>
-	
 </body>
 </html>
