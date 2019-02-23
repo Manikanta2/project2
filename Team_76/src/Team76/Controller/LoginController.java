@@ -55,6 +55,8 @@ public class LoginController extends HttpServlet {
 			
 			request.getSession().setAttribute("validSession", "true");
 			request.getSession().setAttribute("uName", request.getParameter("uName"));
+			
+
 		} else if (action.equalsIgnoreCase("logoff")) {
 			HttpSession session = request.getSession(false);
 	    	if(session != null){

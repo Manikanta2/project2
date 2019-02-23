@@ -20,5 +20,7 @@
 <input type="hidden" name="action" value="CreateQuiz">
 <input type="submit" value="Create Quiz">
 </form>
+
+
 </body>
 </html>
