@@ -13,7 +13,8 @@ public class DatabaseConnect {
 
 	public void databaseConnect(String quiztitle, String qinstruct, String qtype) throws Exception {
 		
-        String query = "INSERT INTO quiz (quiztitle, qinstruct, qtype) VALUES (',' " + quiztitle  + " ' , '" + qinstruct +" ' , ' " + qtype + ")";
+        String query = "INSERT INTO quiz (quiztitle, qinstruct, qtype) VALUES (' " + quiztitle + " ' , ' " + qinstruct
+				+ " ' , ' " + qtype + " ' )";
 	    
 	    String user = "root";
 	    String password = "pass123";
