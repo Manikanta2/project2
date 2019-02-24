@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 
-/**
-*  SER516-Project2
-*  @author Janani Anand
-*  @since 02/19/2019
-*/
+<!--   SER516-Project2
+  @author Janani Anand
+  @since 02/19/2019 -->
 
 <html>
 <head>
