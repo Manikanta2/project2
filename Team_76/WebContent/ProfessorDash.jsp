@@ -18,11 +18,11 @@
 <h1>Welcome Professor</h1>
 <form action="ProfessorController" method="post">
 <input type="hidden" name="action" value="CreateQuiz">
-<input type="submit" value="Create Quiz">
+<input type="submit" name="Create Quiz" value="Create Quiz">
 </form>
-<form action="ProfessorController" method="post">
+<form action="ProfessorController" method="get">
 <input type="hidden" name="action" value="ViewGrades">
-<input type="submit" value="View Grades">
+<input type="submit" name= "View Grades" value="View Grades">
 </form>
 </body>
 </html>

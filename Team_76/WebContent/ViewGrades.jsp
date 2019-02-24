@@ -81,9 +81,9 @@ li a:hover {
 	<h3>Grades</h3>
 
 	<div>
-		<form action="ProfessorController" method="POST">
+		<form action="ProfessorController" method="GET">
 			<label for="qTitle">Quiz Title</label> 
-			<input type="text" id="qTitle" name="quizTitle" placeholder="quiz title...">
+			<input type="text" id="qTitle" name="quiztitle" placeholder="quiz title...">
 			 <select id="qtitle" name="quiztitle">
 				<option value="q1">Quiz-1</option>
 				<option value="q2">Quiz-2</option>
@@ -93,10 +93,13 @@ li a:hover {
 			<input type="text" id="sName" name="studentName" placeholder="student name..."> <br>
 			
 			<input type="hidden" name="action" value="ProfessorDash"> 
-			<input type="submit" value="Back"> 
+			<input type="submit" value="Back">
 			
 			<input type="hidden" name="action" value="ViewGrades"> 
 			<input type="submit" value="Ok">
+			
+			<label for="grade">Grade</label> 
+			<textarea rows="1" cols="4"></textarea>
 		</form>
 	</div>
 </body>

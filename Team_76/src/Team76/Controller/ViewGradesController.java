@@ -16,10 +16,11 @@ public class ViewGradesController {
 	/* This retrieves the request and response parameters from the UI.
 	 */
 	public void getParameters(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String quizTitle = request.getParameter("quizTitle");
-		String studentName = request.getParameter("studentName");
-		System.out.println("This is my title"+ request.getParameter("quizTitle"));
+		System.out.println("request is " + request.toString());
+		String quiztitle = (String) request.getParameter("quiztitle");
+		String studentName = (String) request.getParameter("studentName");
+		System.out.println("This is my title"+ request.getParameter("quiztitle"));
 		System.out.println("This is my name"+ request.getParameter("studentName"));
-		obj.connection("SELECT grade FROM grade WHERE studentName= '" + studentName + "' quizTitle = '" + quizTitle +"'");
+		obj.connection(quiztitle,studentName);
 	}
 }

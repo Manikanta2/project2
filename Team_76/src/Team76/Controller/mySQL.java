@@ -14,20 +14,16 @@ public class mySQL {
 /* The database connection to our JSP page
  * @param holds the query to be retrieved from the database
  */
-	public void connection(String query) throws Exception {
-		try {
+	public void connection(String quiztitle, String studentName) throws Exception {
+		String query = "SELECT * FROM grade WHERE studentName= '" + studentName + " ' and quiztitle = ' " + quiztitle +" ' ";
 				Class.forName("com.mysql.cj.jdbc.Driver");
 				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ser516p2?useSSL=false", "root", "Manikanta.2");
 				Statement statement = con.createStatement();
 				ResultSet rs = statement.executeQuery(query);
-	
 				while (rs.next()) {
 					String grade = rs.getString("grade");
 					System.out.println("Grade is: " + grade);
 				}
 				con.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}	 
 }
