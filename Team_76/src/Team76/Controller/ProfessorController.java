@@ -15,46 +15,63 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/ProfessorController")
 public class ProfessorController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-	QuestionsController quiz=new QuestionsController();
-
-    public ProfessorController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	QuestionsController quiz = new QuestionsController();
+	QuestionEntity entity = new QuestionEntity();
+
+	public ProfessorController() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			//request.getSession().setAttribute("question", question);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String action = request.getParameter("action");
 		if (action == null || action.isEmpty()) {
 			response.sendRedirect("login.jsp");
 		}
-		if(action.equals("CreateQuiz")) {
+		if (action.equals("CreateQuiz")) {
 			response.sendRedirect("CreateQuiz.jsp");
 		}
-		if(action.equals("Questions")) {
-				response.sendRedirect("Questions.jsp");
+		if (action.equals("Questions")) {
+			response.sendRedirect("Questions.jsp");
 
 		}
+		if (action.equals("Continue")) {
+			try {
+				quiz.getParameters(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			response.sendRedirect("Questions.jsp");
+		}
 		
-		  if(action.equals("Continue")) {
-				 quiz.getParameters(request, response);
-					  response.sendRedirect("Questions.jsp"); 
-		  } 
+		if (action.equals("Submit")) {
+			try {
+				quiz.getParameters(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			response.sendRedirect("Questions.jsp");
+		}
 		 
+
 	}
 
 }
