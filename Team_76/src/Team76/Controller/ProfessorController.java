@@ -49,7 +49,7 @@ public class ProfessorController extends HttpServlet {
 		if (action.equals("CreateQuiz")) {
 			response.sendRedirect("CreateQuiz.jsp");
 		}
-		if (action.equals("Questions")) {
+		if (action.equals("Questions")) { 
 			response.sendRedirect("Questions.jsp");
 
 		}
@@ -61,16 +61,14 @@ public class ProfessorController extends HttpServlet {
 			}
 			response.sendRedirect("Questions.jsp");
 		}
-		
+
 		if (action.equals("Submit")) {
-			try {
-				quiz.getParameters(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			response.sendRedirect("Questions.jsp");
+			/*
+			 * try { quiz.getParameters(request, response); } catch (Exception e) {
+			 * e.printStackTrace(); }
+			 */
+			response.sendRedirect("ProfessorDash.jsp");
 		}
-		 
 
 	}
 

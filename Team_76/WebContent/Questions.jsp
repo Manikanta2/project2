@@ -97,17 +97,17 @@ body {font-family: Arial;}
   <input type="text" class="form-control" name="marks" id="a6" placeholder="Enter Marks">
 </div>
  
+   <form action="ProfessorController" method="post">
 <input type="hidden" name="action" value="Continue">
 <input class="btn btn-primary" type="submit" name="Continue" value="Continue">
-
-
-<input type="hidden" name="action" value="Submit">
-<input class="btn btn-primary" type="submit" name="Submit" value="Submit">
-
- 
 </form>
 
-</div>
+  <form action="ProfessorController" method="post">
+<input type="hidden" name="action" value="Submit">
+<input class="btn btn-primary" type="submit" name="Submit" value="Submit">
+</form>
+
+</form>
    
 </body>
 </html> 
