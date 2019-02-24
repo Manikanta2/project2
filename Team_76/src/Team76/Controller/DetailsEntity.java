@@ -1,18 +1,16 @@
-/**
- * 
- */
 package Team76.Controller;
-
 /**
- * @author Janani Anand
- *
- */
+*  SER516-Project2
+*  File content-
+*  @author Janani Anand,
+*  @since 02/19/2019
+*/
 public class DetailsEntity {
 
 	String quiztitle;
 	String qinstruct;
 	String qtype;
-	
+
 	public String getQuiztitle() {
 		return quiztitle;
 	}
@@ -40,9 +38,9 @@ public class DetailsEntity {
 	public DetailsEntity() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public String toString() {
-         return "DetailsEntity [quiztitle=" + quiztitle + ", qinstruct=" + qinstruct + ", qtype=" +qtype+	"]";	
+		return "DetailsEntity [quiztitle=" + quiztitle + ", qinstruct=" + qinstruct + ", qtype=" + qtype + "]";
 	}
 
 }

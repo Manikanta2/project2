@@ -1,26 +1,29 @@
 package Team76.Controller;
 
+/**
+* SER516-Project2
+*  @author Janani Anand, 
+*  @since 02/19/2019
+*/
 import java.sql.*;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class DetailsController {
 
-	public DetailsController() {
-		// TODO Auto-generated constructor stub
-	}
+	/** The method fetches fetches request and response objects from UI and sends parameters for quering in DB**/
 	
 	public void getParameters(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		DatabaseQuestions database =  new DatabaseQuestions();
+
+		DatabaseConnect database = new DatabaseConnect();
 		DetailsEntity entity = new DetailsEntity();
 		entity.setQuiztitle(request.getParameter("quiztitle"));
-        entity.setQinstruct(request.getParameter("qinstruct"));
-        entity.setQtype(request.getParameter("qtype"));
+		entity.setQinstruct(request.getParameter("qinstruct"));
+		entity.setQtype(request.getParameter("qtype"));
 		System.out.println("Entity is " + entity.toString());
+
+		database.databaseConnect(entity.getQuiztitle(), entity.getQinstruct(), entity.getQtype());
 		
-		database.databaseConnect("INSERT INTO quiz (quiztitle, qinstruct, qtype) VALUES" + entity.getQuiztitle() + "," + entity.getQinstruct() + ","+ entity.getQtype());
-	
-	}	
+
+	}
 }
