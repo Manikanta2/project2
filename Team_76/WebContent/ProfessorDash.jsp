@@ -20,7 +20,7 @@
 <input type="hidden" name="action" value="CreateQuiz">
 <input type="submit" value="Create Quiz">
 </form>
-<form action="ProfessorController" method="get">
+<form action="ProfessorController" method="post">
 <input type="hidden" name="action" value="ViewGrades">
 <input type="submit" value="View Grades">
 </form>
