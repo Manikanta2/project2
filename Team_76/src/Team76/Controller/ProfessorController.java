@@ -2,7 +2,6 @@ package Team76.Controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,18 +9,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * 
  * Servlet implementation class ProfessorController
+ * If action equals CreateQuiz, goes to details page,
+ * continues to questions page if action is ProfessorDash1
  */
 @WebServlet("/ProfessorController")
 public class ProfessorController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	DetailsController q = new DetailsController(); // object of quiz class used for calling fetch method
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	QuestionsController quiz = new QuestionsController();
-	QuestionEntity entity = new QuestionEntity();
-
 	public ProfessorController() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -34,6 +34,7 @@ public class ProfessorController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doPost(request, response);
+		String action = request.getParameter("action");
 	}
 
 	/**
@@ -42,6 +43,7 @@ public class ProfessorController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		String action = request.getParameter("action");
 		if (action == null || action.isEmpty()) {
 			response.sendRedirect("login.jsp");
@@ -49,27 +51,22 @@ public class ProfessorController extends HttpServlet {
 		if (action.equals("CreateQuiz")) {
 			response.sendRedirect("CreateQuiz.jsp");
 		}
-		if (action.equals("Questions")) { 
-			response.sendRedirect("Questions.jsp");
-
-		}
-		if (action.equals("Continue")) {
+		if (action.equals("ProfessorDash")) {
 			try {
-				quiz.getParameters(request, response);
+				q.getParameters(request, response);
 			} catch (Exception e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			response.sendRedirect("Questions.jsp");
-		}
-
-		if (action.equals("Submit")) {
-			/*
-			 * try { quiz.getParameters(request, response); } catch (Exception e) {
-			 * e.printStackTrace(); }
-			 */
 			response.sendRedirect("ProfessorDash.jsp");
 		}
 
+		if (action.equals("ProfessorDash1")) {
+			response.sendRedirect("Questions.jsp"); 
+		}
+		/*
+		 * if(request.getSession()==null) 
+		 *    System.out.println("Session worked");
+		 */	
 	}
-
 }

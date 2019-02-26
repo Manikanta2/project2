@@ -34,38 +34,38 @@ public class LoginController extends HttpServlet {
 		// TODO Auto-generated method stub
 		String action = request.getParameter("action");
 		if (action == null || action.isEmpty()) {
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("Login.jsp");
 		} else if (action.equalsIgnoreCase("login")) {
 			String uName = (String) request.getParameter("uName");
 			String password = (String) request.getParameter("password");
-			if((uName == null || uName.isEmpty()) && (password == null || password.isEmpty())) {
+			if ((uName == null || uName.isEmpty()) && (password == null || password.isEmpty())) {
 				response.getWriter().println("<font color=red>Please enter your proper credentials.</font>");
-				response.sendRedirect("login.jsp");
+				response.sendRedirect("Login.jsp");
 			}
-			if(uName.equals("student") && password.equals("123")) {
+			if (uName.equals("student") && password.equals("123")) {
 				response.sendRedirect("StudentDash.jsp");
-			}
-			else if(uName.equals("prof") && password.equals("123")) {
+			} else if (uName.equals("prof") && password.equals("123")) {
 				response.sendRedirect("ProfessorDash.jsp");
-			}else {
+			} else {
 				response.getWriter().println("<font color=red>Either user name or password is wrong.</font>");
-				response.sendRedirect("login.jsp");
+				response.sendRedirect("Login.jsp");
 			}
 			request.getSession().setAttribute("uName", uName);
-			
+
 			request.getSession().setAttribute("validSession", "true");
 			request.getSession().setAttribute("uName", request.getParameter("uName"));
 		} else if (action.equalsIgnoreCase("logoff")) {
-			HttpSession session = request.getSession(false);
-	    	if(session != null){
-	    		session.invalidate();
-	    	}
-	    	response.getWriter().println("<font color=red>Logged off successfully.</font>");
-	    	response.sendRedirect("login.jsp");
+			HttpSession session = request.getSession();
+			if (session != null) {
+				session.removeAttribute("uName");
+				session.removeAttribute("validSession");
+				session.invalidate();
+			}
+			response.getWriter().println("<font color=red>Logged off successfully.</font>");
+			response.sendRedirect("Login.jsp");
 		} else {
 			response.getWriter().println("<font color=red>Something went wrong please login again.</font>");
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("Login.jsp");
 		}
 	}
-
 }

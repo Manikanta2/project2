@@ -1,30 +1,27 @@
 package Team76.Controller;
 
-import java.sql.*;
-
-/**
- * SER516-Project2 File content- Insert the Values into Database
- * 
- * @author Nikhila Saini,nsaini3@asu.edu
- * @since 02/19/2019
- *
- **/
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class DatabaseQuestions {
 
-	public void databaseConnect(String question, String options, String answer) throws Exception {
-		String query = "INSERT INTO Question (QuestionId,Questions,Options,CORRECT_ANSWER) VALUES (' 3 ','" + question
-				+ " ' , '" + options + " ' , ' " + answer + " ') ";
-		String user = "root";
-		String password = "pass123";
+	  public void databaseConnect(String query) throws Exception {
 
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ser516p2?useSSL=false", user,
-				password);
-		PreparedStatement pstmt = con.prepareStatement(query);
-		int result = pstmt.executeUpdate();
-
-		con.close();
+	    Class.forName("com.mysql.cj.jdbc.Driver");
+	    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ser516p2?useSSL=false","root","pass123");
+	    Statement stmt = con.createStatement();
+	    ResultSet rs = stmt.executeQuery(query);
+	    while (rs.next()) {
+	    	
+	      String name = rs.getString("status");
+	      System.out.println("name " + name);
+//	      String desc = rs.getString("Description");
+//	      int qty = rs.getInt("Qty");
+//	      float cost = rs.getFloat("Cost");
+//	      System.out.println(name + ", " + desc + "\t: " + qty + "\t@ $" + cost);
+	    }
+	    con.close();
+	  }
 	}
-
-}
