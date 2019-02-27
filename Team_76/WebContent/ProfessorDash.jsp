@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,11 +18,31 @@
 <h1>Welcome Professor</h1>
 <form action="ProfessorController" method="post">
 <input type="hidden" name="action" value="CreateQuiz">
-<input type="submit" name="Create Quiz" value="Create Quiz">
+<input type="submit" value="Create Quiz">
 </form>
-<form action="ProfessorController" method="get">
-<input type="hidden" name="action" value="ViewGrades">
-<input type="submit" name= "View Grades" value="View Grades">
+
+<form action="ProfessorController" method="post">
+<input type="hidden" name="action" value="Questions">
+<input type="submit" value="Questions">
 </form>
+
+	<div style="float: right">
+		<form align="right" action="LoginController" method="post">
+			<input type="hidden" name="action" value="logoff"> <input
+				type="submit" value="LogOut" class="logout">
+		</form>
+	</div>
+
+	<h1>Welcome Professor</h1>
+
+	<form action="ProfessorController" method="post">
+		<input type="hidden" name="action" value="CreateQuiz"> <input
+			type="submit" value="Create Quiz">
+	</form>
+
+	<form action="ProfessorController" method="post">
+		<input type="hidden" name="action" value="ViewQuiz"> <input
+			type="submit" value="Create Quiz">
+	</form>
 </body>
 </html>
